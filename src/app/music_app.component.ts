@@ -20,7 +20,7 @@ import { SearchService } from './search.service';
         <search-results #results1></search-results>
         
         <div class="container footer" >
-            Music Search - Aarne Uotila - 2017
+            Music Search - 2017
         </div>
     `,
     providers: [SearchService],
