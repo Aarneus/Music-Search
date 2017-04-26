@@ -32,9 +32,17 @@ import {SearchService} from './search.service';
 
 export class ResultsComponent {
     
+    
+    
     // Catch the communication service
     constructor(private searchService:SearchService) {
+        this.searchService.getResultsObservable().subscribe(
+            results => { alert(results); }
+        );
+        
     }
+    
+    
     
     // Results
     private results = [

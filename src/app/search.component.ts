@@ -61,6 +61,7 @@ export class SearchComponent {
     // Searches with the given terms from the Spotify Web API and displays the results
     private search() {
         // TODO
-        this.searchService.test("Testing!");
+        var testResults = [{name: "Rocketeer's Song", type: "Track", length: "3 min", tracks: "1"}];
+        this.searchService.setResults(testResults);
     }
 }
