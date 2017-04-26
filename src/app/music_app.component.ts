@@ -1,7 +1,8 @@
-import {Component, View} from "angular2/core";
+import { Component, View } from 'angular2/core';
 import { SearchComponent } from './search.component';
 import { ResultsComponent } from './results.component';
 import { SearchService } from './search.service';
+
 
 @Component({
     selector: 'music-app'
