@@ -18,7 +18,6 @@ import { ResultsComponent } from './results.component';
         <!-- Results -->
         <search-results></search-results>
         
-        
         <div class="container footer">
             Music Search - Aarne Uotila - 2017
         </div>
