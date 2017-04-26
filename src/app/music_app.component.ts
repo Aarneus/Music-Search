@@ -6,27 +6,65 @@ import {Component, View} from "angular2/core";
 
 @View({
     template: `
-        <div class="container-fluid header">
+        <div class="container header">
         <h2>Music Search</h2>
         </div>
         
         <!-- Search box -->
-        <div class="container-fluid search-box">
-            <div class="row">
-                <div class="col-xs-9">Search input here</div>
-                <div class="col-xs-3">Search button</div>
-            </div>
-            <div class="row search-advanced">
-                <div class="col-xs-1">Track</div>
-                <div class="col-xs-1">Artist</div>
-                <div class="col-xs-1">Album</div>
-                <div class="col-xs-1">Playlist</div>
-                <div class="col-xs-2">Hide advanced</div>
+        <div class="container search-box">
+            <form>
+                <div class="row">
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="search-field" name="search-field" />
+                    </div>
+                    <div class="col-xs-2"><button type="submit" class="btn" id="search-button" name="search-button">Search</button></div>
+                </div>
                 
-            </div>
+                
+                <div class="row search-advanced">
+                    <div class="col-xs-2 checkbox">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value="search-track"/>
+                            <span class="custom-control-indicator search-checkbox"></span>
+                            <span class="custom-control-description">Track</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2 checkbox">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value="search-artist"/>
+                            <span class="custom-control-indicator search-checkbox"></span>
+                            <span class="custom-control-description">Artist</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2 checkbox">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value="search-album"/>
+                            <span class="custom-control-indicator search-checkbox"></span>
+                            <span class="custom-control-description">Album</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-2 checkbox">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value="search-playlist"/>
+                            <span class="custom-control-indicator search-checkbox"></span>
+                            <span class="custom-control-description">Playlist</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="#" class="search-advanced-link"> Hide advanced</a>
+                    </div>
+                </div>
+                
+                <div class="row search-advanced">
+                    <div class="col-xs-12">
+                        <a href="#" class="search-advanced-link">Show advanced</a>
+                    </div>
+                </div>
+            </form>
         </div>
         
-        <div class="container-fluid results">
+        <!-- Results -->
+        <div class="container results">
             <div class="row results-header">
                 <div class="col-xs-2">Track</div>
                 <div class="col-xs-2">Artists</div>
@@ -47,7 +85,7 @@ import {Component, View} from "angular2/core";
         </div>
         
         
-        <div class="container-fluid footer">
+        <div class="container footer">
             Footer
         </div>
   `
