@@ -12,17 +12,18 @@
   "license": "ISC",
   "dependencies": {
     "angular2": "*",
-    "systemjs": "*",
+    "bootstrap": "*",
     "es6-promise": "*",
     "es6-shim": "*",
     "reflect-metadata": "*",
     "rxjs": "*",
+    "systemjs": "*",
     "zone.js": "*"
   },
   "devDependencies": {
     "concurrently": "*",
     "lite-server": "*",
     "typescript": "*",
-    "typings":"*"
+    "typings": "*"
   }
 }
