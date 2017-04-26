@@ -1,5 +1,6 @@
 import {Component, View} from "angular2/core";
 import { SearchComponent } from './search.component';
+import { ResultsComponent } from './results.component';
 
 @Component({
     selector: 'music-app'
@@ -15,56 +16,14 @@ import { SearchComponent } from './search.component';
         <search-box></search-box>
          
         <!-- Results -->
-        <div class="container results">
-            <div class="row results-header">
-                <div class="col-xs-2">Track</div>
-                <div class="col-xs-2">Artists</div>
-                <div class="col-xs-2">Album</div>
-                <div class="col-xs-2">Length</div>
-                <div class="col-xs-2">Popularity</div>
-                <div class="col-xs-2">Explicit</div>
-            </div>
-            
-            <div class="row">
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-                <div class="col-xs-2">????</div>
-            </div>
-        </div>
+        <search-results></search-results>
         
         
         <div class="container footer">
             Music Search - Aarne Uotila - 2017
         </div>
   `,
-  directives: [SearchComponent]
+  directives: [SearchComponent, ResultsComponent]
 })
 
 export class AppComponent {
