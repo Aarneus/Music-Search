@@ -112,7 +112,7 @@ import {Component, View} from "angular2/core";
         
         
         <div class="container footer">
-            Footer
+            Music Search - Aarne Uotila - 2017
         </div>
   `
 })
