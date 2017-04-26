@@ -9,4 +9,31 @@ background-color: black;
 }
 
 .header {
+padding: 5px;
+margin-bottom: 5px;
+}
+
+.footer {
+margin-top: 5px;
+}
+
+.search-box {
+margin-bottom: 5px;
+}
+
+.search-box div[class^="col"] {
+border: 1px solid gray;
+padding: 2px;
+text-align: center;
+}
+
+.search-advanced div[class^="col"] {
+}
+
+
+.results div[class^="col"] {
+}
+
+.results-header div[class^="col"] {
+background-color: #222;
 }
