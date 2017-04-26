@@ -14,7 +14,7 @@ import {Component, View} from "angular2/core";
         <div class="container search-box">
             <form>
                 <div class="row">
-                    <div class="col-xs-9 col-md-10">
+                    <div class="col-xs-9 col-md-10 col-xl-11">
                         <div class="input-group">
                             <input type="search" class="form-control" id="search-field" name="search-field" />
                             <span class="input-group-btn">
@@ -24,9 +24,9 @@ import {Component, View} from "angular2/core";
                             </span>
                         </div>
                     </div>
-                    <div class="col-xs-3 col-md-2">
+                    <div class="col-xs-3 col-md-2 col-xl-1">
                         <a href="#search-options" aria-expanded="false" aria-controls="search-options" data-toggle="collapse" class="btn search-button">
-                            Search options
+                            Advanced
                         </a>
                     </div>
                 </div>
@@ -35,28 +35,28 @@ import {Component, View} from "angular2/core";
                 <div class="row search-advanced collapse" id="search-options">
                     <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-track"/>
+                            <input type="checkbox" class="custom-control-input" value="search-track" checked />
                             <span class="custom-control-indicator search-checkbox"></span>
                             <span class="custom-control-description">Track</span>
                         </label>
                     </div>
                     <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-artist"/>
+                            <input type="checkbox" class="custom-control-input" value="search-artist" checked />
                             <span class="custom-control-indicator search-checkbox"></span>
                             <span class="custom-control-description">Artist</span>
                         </label>
                     </div>
                     <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-album"/>
+                            <input type="checkbox" class="custom-control-input" value="search-album" checked />
                             <span class="custom-control-indicator search-checkbox"></span>
                             <span class="custom-control-description">Album</span>
                         </label>
                     </div>
                     <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-playlist"/>
+                            <input type="checkbox" class="custom-control-input" value="search-playlist" checked />
                             <span class="custom-control-indicator search-checkbox"></span>
                             <span class="custom-control-description">Playlist</span>
                         </label>

@@ -9,12 +9,12 @@ color: #666;
 }
 
 ::selection {
-background-color: red;
+background-color: #06a7ba;
 color: white;
 }
 
 a {
-color: #cb821e;
+color: #c0954b;
 }
 
 a:hover {
@@ -26,7 +26,7 @@ color: #cb821e;
 }
 
 a:visited{
-color: #cb821e;
+color: #c0954b;
 }
 
 div {
@@ -66,15 +66,15 @@ box-shadow: none;
 }
 
 input:not(:checked):focus + .search-checkbox {
-border: 1px solid #cb821e;
+border: 1px solid #c0954b;
 background-color: #000;
-box-shadow: 0px 0px 1px 1px #9f4200;
+box-shadow: 0px 0px 1px 1px #cb821e;
 }
 
 input:checked:focus  + .search-checkbox {
-border: 1px solid #cb821e;
+border: 1px solid #c0954b;
 background-color: #000;
-box-shadow: 0px 0px 1px 1px #9f4200;
+box-shadow: 0px 0px 1px 1px #cb821e;
 }
 
 input:not(:checked):not(:focus) + .search-checkbox {
@@ -84,7 +84,7 @@ box-shadow: none;
 }
 
 input:checked:not(:focus)  + .search-checkbox {
-border: 1px solid #cb821e;
+border: 1px solid #c0954b;
 background-color: #000;
 box-shadow: none;
 }
@@ -98,12 +98,12 @@ background: #111;
 border: 1px solid gray;
 padding: 4px;
 width: 100%;
-color: #cb821e;
+color: #c0954b;
 }
 
 .search-button:hover {
-border: 1px solid #cb821e;
-box-shadow: 0px 0px 1px 1px #9f4200;
+border: 1px solid #c0954b;
+box-shadow: 0px 0px 1px 1px #cb821e;
 }
 
 #search-field {
@@ -114,14 +114,14 @@ border: 1px solid gray;
 }
 
 #search-field:focus {
-border: 1px solid #cb821e;
-color: #cb821e;
-box-shadow: 0px 0px 1px 1px #9f4200;
+border: 1px solid #c0954b;
+color: #c0954b;
+box-shadow: 0px 0px 1px 1px #cb821e;
 }
 #search-field:hover {
-border: 1px solid #cb821e;
-color: #cb821e;
-box-shadow: 0px 0px 1px 1px #9f4200;
+border: 1px solid #c0954b;
+color: #c0954b;
+box-shadow: 0px 0px 1px 1px #cb821e;
 }
 
 
