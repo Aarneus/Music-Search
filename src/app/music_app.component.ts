@@ -14,10 +14,17 @@ import {Component, View} from "angular2/core";
         <div class="container search-box">
             <form>
                 <div class="row">
-                    <div class="col-xs-10">
-                        <input type="text" class="form-control" id="search-field" name="search-field" />
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <input type="search" class="form-control" id="search-field" name="search-field" />
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn" id="search-button" name="search-button">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search!
+                                </button>
+                            </span>
+                            
+                        </div>
                     </div>
-                    <div class="col-xs-2"><button type="submit" class="btn" id="search-button" name="search-button">Search</button></div>
                 </div>
                 
                 
