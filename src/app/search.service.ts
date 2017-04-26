@@ -9,14 +9,14 @@ import { SearchResult } from './searchresult.interface';
 export class SearchService {
     
     
-    // Holds the results
-    private resultsSource = new Subject<any>();
+    // Forwards search results
+    private resultsSource = new Subject<SearchResult[]>();
     
     
     
-    // Displays the results
-    public setResults(results: SearchResult[]) {
-        this.resultsSource.next("TEST");
+    // Sends an event with new results for ResultsComponents to display
+    public sendResults(results: SearchResult[]) {
+        this.resultsSource.next(results);
     }
     
     // Returns a result observable for the ResultsComponent to listen to

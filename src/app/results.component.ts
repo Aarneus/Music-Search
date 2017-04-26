@@ -1,5 +1,6 @@
 import {Component, View} from 'angular2/core';
 import {SearchService} from './search.service';
+import {SearchResult} from './searchresult.interface';
 
 
 @Component({
@@ -8,7 +9,8 @@ import {SearchService} from './search.service';
 
 @View({
     template: `
-        <div class="container results">
+        <!-- Results -->
+        <div class="container results" *ngIf="results">
             <!-- The header row -->
             <div class="row results-header">
                 <div class="col-xs-6">Name</div>
@@ -24,7 +26,10 @@ import {SearchService} from './search.service';
                 <div class="col-xs-1">{{row.tracks}}</div>
                 <div class="col-xs-3">{{row.length}}</div>
             </div>
-            
+        </div>
+        
+        <div class="container results" *ngIf="!results">
+            No results
         </div>
     `
     providers: [SearchService]
@@ -37,17 +42,18 @@ export class ResultsComponent {
     // Catch the communication service
     constructor(private searchService:SearchService) {
         this.searchService.getResultsObservable().subscribe(
-            results => { alert(results); }
+            results => { this.showResults(results); }
         );
         
+    }
+    
+    // Sets the result
+    private showResults(results: SearchResult[]) {
+        this.results = results;
     }
     
     
     
     // Results
-    private results = [
-        {name: "Johnny's Album", type: "Album", length: "1 hr 15 min", tracks: "12"},
-        {name: "Johnny's Album 2", type: "Album", length: "2 hr 5 min", tracks: "11"},
-        {name: "Johnny's Album 3: The Johnnybaloo", type: "Album", length: "24 hr", tracks: "120"}
-    ];
+    private results: SearchResult[] = null
 }    

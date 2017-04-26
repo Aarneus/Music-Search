@@ -62,6 +62,6 @@ export class SearchComponent {
     private search() {
         // TODO
         var testResults = [{name: "Rocketeer's Song", type: "Track", length: "3 min", tracks: "1"}];
-        this.searchService.setResults(testResults);
+        this.searchService.sendResults(testResults);
     }
 }
