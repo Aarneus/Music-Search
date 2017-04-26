@@ -8,6 +8,7 @@ import {Component, View} from "angular2/core";
     template: `
         <div class="container search-box">
             <form>
+                <!-- The search field and buttons -->
                 <div class="row">
                     <div class="col-xs-9 col-md-10 col-xl-11">
                         <div class="input-group">
@@ -26,36 +27,16 @@ import {Component, View} from "angular2/core";
                     </div>
                 </div>
                 
-                
+                <!-- Advanced search options -->
                 <div class="row search-advanced collapse" id="search-options">
-                    <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
+                    <div class="col-xs-3 col-md-2 col-xl-1 checkbox" *ngFor="#category of categories">
                         <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-track" checked />
+                            <input type="checkbox" class="custom-control-input" value="search-{{category.term}}" checked />
                             <span class="custom-control-indicator search-checkbox"></span>
-                            <span class="custom-control-description">Track</span>
+                            <span class="custom-control-description">{{category.label}}</span>
                         </label>
                     </div>
-                    <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
-                        <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-artist" checked />
-                            <span class="custom-control-indicator search-checkbox"></span>
-                            <span class="custom-control-description">Artist</span>
-                        </label>
-                    </div>
-                    <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
-                        <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-album" checked />
-                            <span class="custom-control-indicator search-checkbox"></span>
-                            <span class="custom-control-description">Album</span>
-                        </label>
-                    </div>
-                    <div class="col-xs-3 col-md-2 col-xl-1 checkbox">
-                        <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value="search-playlist" checked />
-                            <span class="custom-control-indicator search-checkbox"></span>
-                            <span class="custom-control-description">Playlist</span>
-                        </label>
-                    </div>
+                   
                 </div>
             </form>
         </div>
@@ -63,4 +44,12 @@ import {Component, View} from "angular2/core";
 })
 
 export class SearchComponent {
+    
+    // Search categories for the Spotify Web API
+    private categories = [
+        {term: "track",     label: "Track"},
+        {term: "artist",    label: "Artist"},
+        {term: "album",     label: "Album"},
+        {term: "playlist",  label: "Playlist"},
+        ];
 }
