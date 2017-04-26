@@ -1,4 +1,5 @@
 import {Component, View} from 'angular2/core';
+import {SearchService} from './search.service';
 
 
 @Component({
@@ -8,6 +9,7 @@ import {Component, View} from 'angular2/core';
 @View({
     template: `
         <div class="container results">
+            <!-- The header row -->
             <div class="row results-header">
                 <div class="col-xs-6">Name</div>
                 <div class="col-xs-2">Type</div>
@@ -15,6 +17,7 @@ import {Component, View} from 'angular2/core';
                 <div class="col-xs-3">Length</div>
             </div>
             
+            <!-- Results table -->
             <div class="row" *ngFor="#row of results">
                 <div class="col-xs-6">{{row.name}}</div>
                 <div class="col-xs-2">{{row.type}}</div>
@@ -24,9 +27,14 @@ import {Component, View} from 'angular2/core';
             
         </div>
     `
+    providers: [SearchService]
 })
 
 export class ResultsComponent {
+    
+    // Catch the communication service
+    constructor(private searchService:SearchService) {
+    }
     
     // Results
     private results = [
