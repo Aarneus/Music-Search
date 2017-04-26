@@ -1,0 +1,5 @@
+node_modules*/
+npm-debug.txt
+src/app/*.js
+src/app/*.js.map
+*.log
