@@ -1,6 +1,10 @@
 
 body {
-background-color: #111;
+background-color: #00252e;
+background-image: url("src/img/bg2.png");
+background-position: left top;
+background-repeat: repeat-x;
+background-size: 200px;
 color: #666;
 }
 
@@ -10,38 +14,41 @@ color: white;
 }
 
 a {
-color: #dfa200;
+color: #cb821e;
 }
 
 a:hover {
-color: #dfa200;
+color: #cb821e;
 }
 
 a:active{
-color: #dfa200;
+color: #cb821e;
 }
 
 a:visited{
-color: #dfa200;
+color: #cb821e;
 }
 
 div {
-background-color: #000;
+background-color: rgba(0,0,0,0.9);
+border-radius: 5px;
 }
 
 .header {
 padding: 5px;
-margin-bottom: 5px;
+margin-bottom: 2px;
+margin-top: 5px;
+padding-top: 15px;
 }
 
 .footer {
-margin-top: 5px;
+margin-top: 2px;
 }
 
 
 /* Search-box */
 .search-box {
-margin-bottom: 5px;
+margin-bottom: 2px;
 }
 
 .search-box div[class^="col"] {
@@ -59,13 +66,13 @@ box-shadow: none;
 }
 
 input:not(:checked):focus + .search-checkbox {
-border: 1px solid #dfa200;
+border: 1px solid #cb821e;
 background-color: #000;
 box-shadow: 0px 0px 1px 1px #9f4200;
 }
 
 input:checked:focus  + .search-checkbox {
-border: 1px solid #dfa200;
+border: 1px solid #cb821e;
 background-color: #000;
 box-shadow: 0px 0px 1px 1px #9f4200;
 }
@@ -77,7 +84,7 @@ box-shadow: none;
 }
 
 input:checked:not(:focus)  + .search-checkbox {
-border: 1px solid #dfa200;
+border: 1px solid #cb821e;
 background-color: #000;
 box-shadow: none;
 }
@@ -91,11 +98,11 @@ background: #111;
 border: 1px solid gray;
 padding: 4px;
 width: 100%;
-color: #888;
+color: #cb821e;
 }
 
 .search-button:hover {
-border: 1px solid #dfa200;
+border: 1px solid #cb821e;
 box-shadow: 0px 0px 1px 1px #9f4200;
 }
 
@@ -107,13 +114,13 @@ border: 1px solid gray;
 }
 
 #search-field:focus {
-border: 1px solid #dfa200;
-color: #dfa200;
+border: 1px solid #cb821e;
+color: #cb821e;
 box-shadow: 0px 0px 1px 1px #9f4200;
 }
 #search-field:hover {
-border: 1px solid #dfa200;
-color: #dfa200;
+border: 1px solid #cb821e;
+color: #cb821e;
 box-shadow: 0px 0px 1px 1px #9f4200;
 }
 
@@ -125,6 +132,8 @@ display: block!important;
 
 /* Results */
 .results {
+border-radius: 5px;
+overflow-x: hidden;
 }
 
 .results div[class^="col"] {
@@ -133,4 +142,8 @@ display: block!important;
 .results-header div[class^="col"] {
 background-color: #222;
 color: #888;
+border-radius: 0px;
+}
+
+.results-header {
 }

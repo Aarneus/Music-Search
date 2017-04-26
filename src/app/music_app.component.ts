@@ -7,7 +7,7 @@ import {Component, View} from "angular2/core";
 @View({
     template: `
         <div class="container header">
-        <h2>Music Search</h2>
+        <img class="header-image img-fluid m-x-auto d-block" src="src/img/logo.png" />
         </div>
         
         <!-- Search box -->
@@ -19,7 +19,7 @@ import {Component, View} from "angular2/core";
                             <input type="search" class="form-control" id="search-field" name="search-field" />
                             <span class="input-group-btn">
                                 <button type="submit" class="btn search-button" id="search-button" name="search-button">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search!
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                                 </button>
                             </span>
                         </div>
