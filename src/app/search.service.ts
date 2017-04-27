@@ -64,7 +64,6 @@ export class SearchService {
                 service.setNewResultsFromSpotify(items);
             };
         });
-        return [];
     }
     
     // Searches the Spotify Web API for artists with the given name
@@ -77,7 +76,6 @@ export class SearchService {
                 service.setNewResultsFromSpotify(items);
             };
         });
-        return [];
     }
     
     // Searches the Spotify Web API for albums with the given name
@@ -90,7 +88,6 @@ export class SearchService {
                 service.setNewResultsFromSpotify(items);
             };
         });
-        return [];
     }
     
     
@@ -104,7 +101,6 @@ export class SearchService {
                 service.setNewResultsFromSpotify(items);
             };
         });
-        return [];
     }
     
     
