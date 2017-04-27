@@ -79,6 +79,13 @@ export class SearchComponent {
                 searchMethods.push(category.method);
             }
         }
+        // Assume no checkboxes checked means the same as all of them for usability
+        if (searchMethods.length == 0) {
+            for category of this.categories {
+                searchMethods.push(category.method);
+            }
+        }
+        
         // Send the search
         this.searchService.search(this.searchText.nativeElement.value, searchMethods, keepPreviousResults);
     }
