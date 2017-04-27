@@ -7,6 +7,7 @@ background-repeat: repeat-x;
 background-size: 200px;
 color: #888;
 font-family: Helvetica;
+font-size: 80%;
 }
 
 ::selection {
@@ -151,7 +152,6 @@ background: -webkit-linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
 
 .results div[class^="col"] {
 text-transform: capitalize;
-font-size: 80%;
 border: 1px solid black;
 border-radius: 0px;
 }
