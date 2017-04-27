@@ -12,7 +12,7 @@ import {SearchService} from './search.service';
             <div class="row">
                 <div class="col-xs-9 col-md-10 col-xl-11">
                     <div class="input-group">
-                        <input #searchField (keyup)="search(true);" type="search" class="form-control" id="search-field" name="search-field" />
+                        <input #searchField (keyup)="search(true);" type="search" class="form-control" id="search-field" name="search-field" autofocus />
                         <span class="input-group-btn">
                             <button (click)="search(false);" type="button" class="btn search-button" id="search-button" name="search-button">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
