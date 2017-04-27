@@ -13,14 +13,14 @@ import {SearchResult} from './searchresult.interface';
         <div class="container results" *ngIf="results">
             <!-- The header row -->
             <div class="row results-header">
-                <div class="col-xs-10">Name</div>
-                <div class="col-xs-2">Type</div>
+                <div class="col-xs-9">Name</div>
+                <div class="col-xs-3">Type</div>
             </div>
             
             <!-- Results table -->
             <div class="row" *ngFor="#row of results">
-                <div class="col-xs-10">{{row.name}}</div>
-                <div class="col-xs-2">{{row.type}}</div>
+                <div class="col-xs-9">{{row.name}}</div>
+                <div class="col-xs-3">{{row.type}}</div>
             </div>
         </div>
         

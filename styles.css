@@ -44,6 +44,7 @@ background: -webkit-linear-gradient(#001419, rgba(0,0,0,0.8));
 
 .footer {
 margin-top: 2px;
+margin-bottom: 7px;
 background: rgba(0,0,0,0.8);
 text-align: right;
 font-size: 80%;
