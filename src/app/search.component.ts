@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, View} from "angular2/core";
+import {Component, Output, EventEmitter, View, ViewChild} from "angular2/core";
 import {SearchService} from './search.service';
 
 @Component({
@@ -12,7 +12,7 @@ import {SearchService} from './search.service';
             <div class="row">
                 <div class="col-xs-9 col-md-10 col-xl-11">
                     <div class="input-group">
-                        <input (keyup)="search();" type="search" class="form-control" id="search-field" name="search-field" />
+                        <input #searchField (keyup)="search();" type="search" class="form-control" id="search-field" name="search-field" />
                         <span class="input-group-btn">
                             <button (click)="search();" type="button" class="btn search-button" id="search-button" name="search-button">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
@@ -29,9 +29,9 @@ import {SearchService} from './search.service';
             
             <!-- Advanced search options -->
             <div class="row search-advanced collapse" id="search-options">
-                <div class="col-xs-3 col-md-2 col-xl-1 checkbox" *ngFor="#category of categories">
+                <div class="col-xs-3 col-md-2 col-xl-1 checkbox" *ngFor="#category of categories; #i = index">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" value="search-{{category.term}}" checked />
+                        <input type="checkbox" class="custom-control-input" value="search-{{category.term}}" (change)="setCategory(i, $event.target.checked);" [checked]="categories[i].checked" />
                         <span class="custom-control-indicator search-checkbox"></span>
                         <span class="custom-control-description">{{category.label}}</span>
                     </label>
@@ -43,25 +43,41 @@ import {SearchService} from './search.service';
     providers: [SearchService]
 })
 
+
 export class SearchComponent {
+    
+    // The input field for the search
+    @ViewChild('searchField') searchText: any;
+    
     
     // Catch the communication service
     constructor(private searchService:SearchService) {
     }
     
-    
     // Search categories for the Spotify Web API
     private categories = [
-        {term: "track",     label: "Track"},
-        {term: "artist",    label: "Artist"},
-        {term: "album",     label: "Album"},
-        {term: "playlist",  label: "Playlist"},
+        {term: "track",     label: "Track",     checked: true},
+        {term: "artist",    label: "Artist",    checked: true},
+        {term: "album",     label: "Album",     checked: true},
+        {term: "playlist",  label: "Playlist",  checked: false}
         ];
+     
+    // Set the given category and searches with the new category settings
+    private setCategory(i:int, value:boolean) {
+        this.categories[i].checked = value;
+        this.search();
+    }
     
     // Searches with the given terms from the Spotify Web API and displays the results
     private search() {
-        // TODO
-        var testResults = [{name: "Rocketeer's Song", type: "Track", length: "3 min", tracks: "1"}];
-        this.searchService.sendResults(testResults);
+        // Get the current list of active search categories
+        var searchMethods = [];
+        for category of this.categories {
+            if (category.checked) {
+                searchMethods.push(category.term);
+            }
+        }
+        // Send the search
+        this.searchService.search(this.searchText.nativeElement.value, searchMethods);
     }
 }
