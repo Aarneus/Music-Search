@@ -165,7 +165,18 @@ export class SearchService {
     
     // Adds a result to the current result list if an equivalent is not already there
     private addResult(result: SearchResult) {
-        this.results.push(result);
+        var duplicate = false;
+        
+        for (r of this.results) {
+            if (r.name === result.name && r.type === result.type) {
+                duplicate = true;
+                break;
+            }        
+        }
+        
+        if (!duplicate) {
+            this.results.push(result);
+        }
     }
     
     // Updates the previous results if needed
