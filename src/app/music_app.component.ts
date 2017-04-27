@@ -11,7 +11,7 @@ import { SearchService } from './search.service';
 @View({
     template: `
         <div class="container header">
-        <img (click)="test();" class="header-image img-fluid m-x-auto d-block" src="src/img/logo.png" />
+        <img class="header-image img-fluid m-x-auto d-block" src="src/img/logo.png" />
         </div>
         
         <!-- Search box -->
