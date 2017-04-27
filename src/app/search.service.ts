@@ -61,107 +61,69 @@ export class SearchService {
             else {
                 var items = data.tracks.items;
                 service.updatePreviousResults(items.length > 0);
-                
-                // Format the results
-                if (!service.keepPreviousResults) {
-                    for (item of items) {
-                        service.addResult({
-                            name:       item.name,
-                            type:       item.type,
-                            popularity: item.popularity,
-                            data:       null
-                        });
-                    }
-                    // Return the results
-                    service.sendResults(service.results);
-                }
+                service.setNewResultsFromSpotify(items);
             };
         });
         return [];
     }
     
-     // Searches the Spotify Web API for artists with the given name
+    // Searches the Spotify Web API for artists with the given name
     public searchArtists(name: string, service: SearchService) {
         service.spotify.searchArtists('"' + name + '"', function(err, data) {
             if (err) console.error(err);
             else {
                 var items = data.artists.items;
                 service.updatePreviousResults(items.length > 0);
-                
-                // Format the results
-                if (!service.keepPreviousResults) {
-                    for (item of items) {
-                        service.addResult({
-                            name:       item.name,
-                            type:       item.type,
-                            popularity: item.popularity,
-                            data:       null
-                            
-                        });
-                        
-                    }
-                    // Return the results
-                    service.sendResults(service.results);
-                }
+                service.setNewResultsFromSpotify(items);
             };
         });
         return [];
     }
     
-     // Searches the Spotify Web API for albums with the given name
+    // Searches the Spotify Web API for albums with the given name
     public searchAlbums(name: string, service: SearchService) {
         service.spotify.searchAlbums('"' + name + '"', function(err, data) {
             if (err) console.error(err);
             else {
                 var items = data.albums.items;
                 service.updatePreviousResults(items.length > 0);
-                
-                // Format the results
-                if (!service.keepPreviousResults) {
-                    for (item of items) {
-                        service.addResult({
-                            name:       item.name,
-                            type:       item.album_type,
-                            popularity: null,
-                            data:       null
-                        });
-                        
-                    }
-                    // Return the results
-                    service.sendResults(service.results);
-                }
+                service.setNewResultsFromSpotify(items);
             };
         });
         return [];
     }
     
     
-     // Searches the Spotify Web API for playlists with the given name
+    // Searches the Spotify Web API for playlists with the given name
     public searchPlaylists(name: string, service: SearchService) {
         service.spotify.searchPlaylists('"' + name + '"', function(err, data) {
             if (err) console.error(err);
             else {
                 var items = data.playlists.items;
                 service.updatePreviousResults(items.length > 0);
-                
-                // Format the results
-                if (!service.keepPreviousResults) {
-                    for (item of items) {
-                        service.addResult({
-                            name:       item.name,
-                            type:       item.type,
-                            popularity: null,
-                            data:       null
-                        });
-                        
-                    }
-                    // Return the results
-                    service.sendResults(service.results);
-                }
+                service.setNewResultsFromSpotify(items);
             };
         });
         return [];
     }
+    
+    
+    // Formats a Spotify Object into a SearchResult
+    private spotifyToSearchResult(item: any, type: string) {
+        var result = {
+            name:       item.name,
+            type:       item.type,
+            popularity: item.popularity,
+            data:       null
+        };
+        
+        if (item.type == "album") {
+            result.type = item.album_type;
+        }
+        
+        return result;
+    }
+    
     
     // Adds a result to the current result list if an equivalent is not already there
     private addResult(result: SearchResult) {
@@ -178,6 +140,19 @@ export class SearchService {
             this.results.push(result);
         }
     }
+    
+    // Sets the new results from Spotify objects
+    private setNewResultsFromSpotify(items: any[]) {
+        // Format the results
+        if (!this.keepPreviousResults) {
+            for (item of items) {
+                this.addResult(this.spotifyToSearchResult(item));
+            }
+            // Return the results
+            this.sendResults(this.results);
+        }
+    }
+    
     
     // Updates the previous results if needed
     private updatePreviousResults(newResults: boolean) {
