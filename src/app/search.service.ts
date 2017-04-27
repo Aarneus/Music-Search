@@ -65,13 +65,12 @@ export class SearchService {
                 // Format the results
                 if (!service.keepPreviousResults) {
                     for (item of items) {
-                        service.results.push({
+                        service.addResult({
                             name:       item.name,
                             type:       item.type,
                             popularity: item.popularity,
                             data:       null
                         });
-                        
                     }
                     // Return the results
                     service.sendResults(service.results);
@@ -92,7 +91,7 @@ export class SearchService {
                 // Format the results
                 if (!service.keepPreviousResults) {
                     for (item of items) {
-                        service.results.push({
+                        service.addResult({
                             name:       item.name,
                             type:       item.type,
                             popularity: item.popularity,
@@ -120,7 +119,7 @@ export class SearchService {
                 // Format the results
                 if (!service.keepPreviousResults) {
                     for (item of items) {
-                        service.results.push({
+                        service.addResult({
                             name:       item.name,
                             type:       item.album_type,
                             popularity: null,
@@ -148,7 +147,7 @@ export class SearchService {
                 // Format the results
                 if (!service.keepPreviousResults) {
                     for (item of items) {
-                        service.results.push({
+                        service.addResult({
                             name:       item.name,
                             type:       item.type,
                             popularity: null,
@@ -162,6 +161,11 @@ export class SearchService {
             };
         });
         return [];
+    }
+    
+    // Adds a result to the current result list if an equivalent is not already there
+    private addResult(result: SearchResult) {
+        this.results.push(result);
     }
     
     // Updates the previous results if needed

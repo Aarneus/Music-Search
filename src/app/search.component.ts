@@ -53,7 +53,6 @@ export class SearchComponent {
     private categories = [];
     
     // Catch the communication service and initialize the search categories
-    // TODO: other than tracks
     constructor(private searchService:SearchService) {
         this.categories = [
         {term: "track",     label: "Tracks",     checked: true,      method: this.searchService.searchTracks},
