@@ -144,6 +144,7 @@ background: -webkit-linear-gradient(rgba(0,0,0,0.8), #000);
 }
 
 .results div[class^="col"] {
+text-transform: capitalize;
 }
 
 .results-header div[class^="col"] {

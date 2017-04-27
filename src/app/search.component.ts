@@ -56,10 +56,10 @@ export class SearchComponent {
     // TODO: other than tracks
     constructor(private searchService:SearchService) {
         this.categories = [
-        {term: "track",     label: "Track",     checked: true,      method: this.searchService.searchTracks},
-        {term: "artist",    label: "Artist",    checked: true,      method: this.searchService.searchArtists},
-        {term: "album",     label: "Album",     checked: true,      method: this.searchService.searchTracks},
-        {term: "playlist",  label: "Playlist",  checked: false,     method: this.searchService.searchTracks}
+        {term: "track",     label: "Tracks",     checked: true,      method: this.searchService.searchTracks},
+        {term: "artist",    label: "Artists",    checked: true,      method: this.searchService.searchArtists},
+        {term: "album",     label: "Albums",     checked: false,     method: this.searchService.searchAlbums},
+        {term: "playlist",  label: "Playlists",  checked: false,     method: this.searchService.searchPlaylists}
         ];
     }
     

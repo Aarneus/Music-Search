@@ -2,7 +2,6 @@ import { Injectable } from 'angular2/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { SearchResult } from './searchresult.interface';
-import { Config } from './config.ts';
 
 declare var SpotifyWebApi : any;
 
@@ -17,63 +16,6 @@ export class SearchService {
     
     constructor() {
         this.spotify = new SpotifyWebApi();
-    }
-    
-    
-    // Searches the Spotify Web API for tracks with the given name
-    public searchTracks(name: string, service: SearchService) {
-        service.spotify.searchTracks('track:"' + name + '"', function(err, data) {
-            if (err) console.error(err);
-            else {
-                var items = data.tracks.items;
-                service.updatePreviousResults(items.length > 0);
-                
-                // Format the results
-                if (!service.keepPreviousResults) {
-                    for (item of items) {
-                        service.results.push({
-                            name:       item.name,
-                            type:       "Track",
-                            popularity: item.popularity,
-                            data:       null
-                        });
-                        
-                    }
-                    // Return the results
-                    service.sendResults(service.results);
-                }
-            };
-        });
-        return [];
-    }
-    
-     // Searches the Spotify Web API for artists with the given name
-    public searchArtists(name: string, service: SearchService) {
-        service.spotify.searchArtists('"' + name + '"', function(err, data) {
-            if (err) console.error(err);
-            else {
-                var items = data.artists.items;
-                service.updatePreviousResults(items.length > 0);
-                console.warn("artists", items);
-                
-                // Format the results
-                if (!service.keepPreviousResults) {
-                    for (item of items) {
-                        service.results.push({
-                            name:       item.name,
-                            type:       "Artist",
-                            popularity: item.popularity,
-                            data:       null
-                            
-                        });
-                        
-                    }
-                    // Return the results
-                    service.sendResults(service.results);
-                }
-            };
-        });
-        return [];
     }
     
     
@@ -108,6 +50,118 @@ export class SearchService {
     // Returns a result observable for the ResultsComponent to listen to
     public getResultsObservable() {
         return this.resultsSource;
+    }
+    
+    
+    
+    // Searches the Spotify Web API for tracks with the given name
+    public searchTracks(name: string, service: SearchService) {
+        service.spotify.searchTracks('track:"' + name + '"', function(err, data) {
+            if (err) console.error(err);
+            else {
+                var items = data.tracks.items;
+                service.updatePreviousResults(items.length > 0);
+                
+                // Format the results
+                if (!service.keepPreviousResults) {
+                    for (item of items) {
+                        service.results.push({
+                            name:       item.name,
+                            type:       item.type,
+                            popularity: item.popularity,
+                            data:       null
+                        });
+                        
+                    }
+                    // Return the results
+                    service.sendResults(service.results);
+                }
+            };
+        });
+        return [];
+    }
+    
+     // Searches the Spotify Web API for artists with the given name
+    public searchArtists(name: string, service: SearchService) {
+        service.spotify.searchArtists('"' + name + '"', function(err, data) {
+            if (err) console.error(err);
+            else {
+                var items = data.artists.items;
+                service.updatePreviousResults(items.length > 0);
+                
+                // Format the results
+                if (!service.keepPreviousResults) {
+                    for (item of items) {
+                        service.results.push({
+                            name:       item.name,
+                            type:       item.type,
+                            popularity: item.popularity,
+                            data:       null
+                            
+                        });
+                        
+                    }
+                    // Return the results
+                    service.sendResults(service.results);
+                }
+            };
+        });
+        return [];
+    }
+    
+     // Searches the Spotify Web API for albums with the given name
+    public searchAlbums(name: string, service: SearchService) {
+        service.spotify.searchAlbums('"' + name + '"', function(err, data) {
+            if (err) console.error(err);
+            else {
+                var items = data.albums.items;
+                service.updatePreviousResults(items.length > 0);
+                
+                // Format the results
+                if (!service.keepPreviousResults) {
+                    for (item of items) {
+                        service.results.push({
+                            name:       item.name,
+                            type:       item.album_type,
+                            popularity: null,
+                            data:       null
+                        });
+                        
+                    }
+                    // Return the results
+                    service.sendResults(service.results);
+                }
+            };
+        });
+        return [];
+    }
+    
+    
+     // Searches the Spotify Web API for playlists with the given name
+    public searchPlaylists(name: string, service: SearchService) {
+        service.spotify.searchPlaylists('"' + name + '"', function(err, data) {
+            if (err) console.error(err);
+            else {
+                var items = data.playlists.items;
+                service.updatePreviousResults(items.length > 0);
+                
+                // Format the results
+                if (!service.keepPreviousResults) {
+                    for (item of items) {
+                        service.results.push({
+                            name:       item.name,
+                            type:       item.type,
+                            popularity: null,
+                            data:       null
+                        });
+                        
+                    }
+                    // Return the results
+                    service.sendResults(service.results);
+                }
+            };
+        });
+        return [];
     }
     
     // Updates the previous results if needed
