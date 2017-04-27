@@ -49,18 +49,20 @@ export class SearchComponent {
     // The input field for the search
     @ViewChild('searchField') searchText: any;
     
+    // Search categories for the Spotify Web API
+    private categories = [];
     
-    // Catch the communication service
+    // Catch the communication service and initialize the search categories
+    // TODO: other than tracks
     constructor(private searchService:SearchService) {
+        this.categories = [
+        {term: "track",     label: "Track",     checked: true,      method: this.searchService.searchTracks},
+        {term: "artist",    label: "Artist",    checked: true,      method: this.searchService.searchTracks},
+        {term: "album",     label: "Album",     checked: true,      method: this.searchService.searchTracks},
+        {term: "playlist",  label: "Playlist",  checked: false,     method: this.searchService.searchTracks}
+        ];
     }
     
-    // Search categories for the Spotify Web API
-    private categories = [
-        {term: "track",     label: "Track",     checked: true},
-        {term: "artist",    label: "Artist",    checked: true},
-        {term: "album",     label: "Album",     checked: true},
-        {term: "playlist",  label: "Playlist",  checked: false}
-        ];
      
     // Set the given category and searches with the new category settings
     private setCategory(i:int, value:boolean) {
@@ -74,7 +76,7 @@ export class SearchComponent {
         var searchMethods = [];
         for category of this.categories {
             if (category.checked) {
-                searchMethods.push(category.term);
+                searchMethods.push(category.method);
             }
         }
         // Send the search
