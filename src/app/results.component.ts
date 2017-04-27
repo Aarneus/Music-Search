@@ -32,7 +32,7 @@ import {SearchResult} from './searchresult.interface';
 })
 
 export class ResultsComponent {
-    
+    private results: SearchResult[] = null
     
     
     // Catch the communication service
@@ -50,6 +50,5 @@ export class ResultsComponent {
     
     
     
-    // Results
-    private results: SearchResult[] = null
+    
 }    

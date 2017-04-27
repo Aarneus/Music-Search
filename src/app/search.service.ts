@@ -1,7 +1,7 @@
 import { Injectable } from 'angular2/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { SearchResult } from './searchresult.interface';
+import { SearchResult} from './searchresult.interface';
 
 declare var SpotifyWebApi : any;
 
@@ -130,7 +130,7 @@ export class SearchService {
         var duplicate = false;
         
         for (r of this.results) {
-            if (r.name === result.name && r.type === result.type) {
+            if (r.name == result.name && r.type == result.type) {
                 duplicate = true;
                 break;
             }        
@@ -161,5 +161,4 @@ export class SearchService {
             this.keepPreviousResults = false;
         }
     }
-    
 }
