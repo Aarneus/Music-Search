@@ -3,6 +3,6 @@
 export interface SearchResult {
   name: string;
   type: string;
-  length: string;
-  tracks: integer;
+  popularity: integer;
+  data: any;
 }

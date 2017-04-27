@@ -12,9 +12,9 @@ import {SearchService} from './search.service';
             <div class="row">
                 <div class="col-xs-9 col-md-10 col-xl-11">
                     <div class="input-group">
-                        <input #searchField (keyup)="search();" type="search" class="form-control" id="search-field" name="search-field" />
+                        <input #searchField (keyup)="search(true);" type="search" class="form-control" id="search-field" name="search-field" />
                         <span class="input-group-btn">
-                            <button (click)="search();" type="button" class="btn search-button" id="search-button" name="search-button">
+                            <button (click)="search(false);" type="button" class="btn search-button" id="search-button" name="search-button">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                             </button>
                         </span>
@@ -57,7 +57,7 @@ export class SearchComponent {
     constructor(private searchService:SearchService) {
         this.categories = [
         {term: "track",     label: "Track",     checked: true,      method: this.searchService.searchTracks},
-        {term: "artist",    label: "Artist",    checked: true,      method: this.searchService.searchTracks},
+        {term: "artist",    label: "Artist",    checked: true,      method: this.searchService.searchArtists},
         {term: "album",     label: "Album",     checked: true,      method: this.searchService.searchTracks},
         {term: "playlist",  label: "Playlist",  checked: false,     method: this.searchService.searchTracks}
         ];
@@ -67,11 +67,11 @@ export class SearchComponent {
     // Set the given category and searches with the new category settings
     private setCategory(i:int, value:boolean) {
         this.categories[i].checked = value;
-        this.search();
+        this.search(false);
     }
     
     // Searches with the given terms from the Spotify Web API and displays the results
-    private search() {
+    private search(keepPreviousResults: boolean) {
         // Get the current list of active search categories
         var searchMethods = [];
         for category of this.categories {
@@ -80,6 +80,6 @@ export class SearchComponent {
             }
         }
         // Send the search
-        this.searchService.search(this.searchText.nativeElement.value, searchMethods);
+        this.searchService.search(this.searchText.nativeElement.value, searchMethods, keepPreviousResults);
     }
 }

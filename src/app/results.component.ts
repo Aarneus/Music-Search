@@ -13,18 +13,16 @@ import {SearchResult} from './searchresult.interface';
         <div class="container results" *ngIf="results">
             <!-- The header row -->
             <div class="row results-header">
-                <div class="col-xs-6">Name</div>
+                <div class="col-xs-7">Name</div>
                 <div class="col-xs-2">Type</div>
-                <div class="col-xs-1">Tracks</div>
-                <div class="col-xs-3">Length</div>
+                <div class="col-xs-3">Popularity</div>
             </div>
             
             <!-- Results table -->
             <div class="row" *ngFor="#row of results">
-                <div class="col-xs-6">{{row.name}}</div>
+                <div class="col-xs-7">{{row.name}}</div>
                 <div class="col-xs-2">{{row.type}}</div>
-                <div class="col-xs-1">{{row.tracks}}</div>
-                <div class="col-xs-3">{{row.length}}</div>
+                <div class="col-xs-3">{{row.popularity}}</div>
             </div>
         </div>
         

@@ -12,6 +12,7 @@ export class SearchService {
     private resultsSource = new Subject<SearchResult[]>();
     private spotify : SpotifyWebApi;
     private results : SearchResult[];
+    private keepPreviousResults: boolean;
     
     
     constructor() {
@@ -24,31 +25,70 @@ export class SearchService {
         service.spotify.searchTracks('track:"' + name + '"', function(err, data) {
             if (err) console.error(err);
             else {
-                console.warn("JOU:", data.tracks.items);
-                for (item of data.tracks.items) {
-                    service.results.push({
-                        name:   item.name,
-                        type:   "Track",
-                        length: service.formatLength(item.duration_ms),
-                        tracks: 1
-                    });
-                    
+                var items = data.tracks.items;
+                service.updatePreviousResults(items.length > 0);
+                
+                // Format the results
+                if (!service.keepPreviousResults) {
+                    for (item of items) {
+                        service.results.push({
+                            name:       item.name,
+                            type:       "Track",
+                            popularity: item.popularity,
+                            data:       null
+                        });
+                        
+                    }
+                    // Return the results
+                    service.sendResults(service.results);
                 }
-                service.sendResults(service.results);
+            };
+        });
+        return [];
+    }
+    
+     // Searches the Spotify Web API for artists with the given name
+    public searchArtists(name: string, service: SearchService) {
+        service.spotify.searchArtists('"' + name + '"', function(err, data) {
+            if (err) console.error(err);
+            else {
+                var items = data.artists.items;
+                service.updatePreviousResults(items.length > 0);
+                console.warn("artists", items);
+                
+                // Format the results
+                if (!service.keepPreviousResults) {
+                    for (item of items) {
+                        service.results.push({
+                            name:       item.name,
+                            type:       "Artist",
+                            popularity: item.popularity,
+                            data:       null
+                            
+                        });
+                        
+                    }
+                    // Return the results
+                    service.sendResults(service.results);
+                }
             };
         });
         return [];
     }
     
     
-    
-    
-    
     // Performs a search from the Spotify Web API with the given terms
-    public search(text: string, methods: function[]) {
+    public search(text: string, methods: function[], keepPreviousResults: boolean) {
         // Get the results if there are any
         if (text != '') {
-            this.results = [];
+            // Keep track of new results if we don't want the results to jump up and down 
+            // when entering incomplete words
+            this.keepPreviousResults = keepPreviousResults;
+            if (!keepPreviousResults) {
+                this.results = [];
+            }
+            
+            // Get the results
             for (method of methods) {
                 method(text, this);
             }
@@ -70,9 +110,12 @@ export class SearchService {
         return this.resultsSource;
     }
     
-    // Formats a millisecond count to a human readable number
-    private formatLength(length:integer) {
-        return length/1000/60;
+    // Updates the previous results if needed
+    private updatePreviousResults(newResults: boolean) {
+        if (this.keepPreviousResults && newResults) {
+            this.results = [];
+            this.keepPreviousResults = false;
+        }
     }
     
 }
